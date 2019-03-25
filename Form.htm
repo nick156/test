@@ -1,28 +1,32 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
     <style type="text/css">
         .auto-style1 {
             height: 36px;
             font-weight: normal;
         }
+
         .auto-style4 {
             font-weight: normal;
         }
+
         .auto-style10 {
             height: 90px;
             font-weight: normal;
             width: 135px;
             color: #003300;
         }
+
         .auto-style11 {
             height: 90px;
             font-weight: normal;
             width: 135px;
             text-align: left;
         }
+
         .auto-style12 {
             height: 90px;
             font-weight: normal;
@@ -31,6 +35,7 @@
             text-align: right;
             font-size: medium;
         }
+
         .auto-style13 {
             font-weight: normal;
             height: 90px;
@@ -39,130 +44,237 @@
     </style>
 </head>
 <body>
-<form action="http://203.64.84.113/x/RQ_RS.aspx" method="post">
- <h1 class="auto-style4">急診醫學訓練評估表單</h1>
-         <h2><span class="auto-style4">&nbsp; 日期:</span><input type="text" name="年" style="width: 48px"><span class="auto-style4"> 年</span><input type="text" name="月" style="width: 48px"><span class="auto-style4"> 月</span><input type="text" name="日" style="width: 48px"><span class="auto-style4"> 日&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 姓名:</span><input type="text" name="姓名" style="width: 125px"><span class="auto-style4">姓別   </span>   <select name"select_one style="width: 125px">
-            <option value="男" name="性別">男生</option>
-            <option value="女" name="性別">女生</option>
-          
-        </select><span class="auto-style4">
-              職級</span><input type="radio" name="Fruit" value="PGT1"><span class="auto-style4"> PGY1</span><input type="radio" name="Fruit" value="PGY2"><span class="auto-style4"> PGY2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 教師:</span><input type="text" name="教師" style="width: 125px"><span class="auto-style4"><br>
+
+    <h1 class="auto-style4">急診醫學訓練評估表單</h1>
+
+
+
+    <form action="http://203.64.84.113/x/RQ_RS.aspx" method="post" id="form1" name="form1" onsubmit='return datacheck()'>
+        名字:<input type="text" id="Name" name="名字">
+        電話:
+        <input onkeyup="value=value.replace(/[^\d]/g,'') " id="Tp" name="電話">
+        生日:<input type="text" id="Bd" name="生日">
+        性別:<input type="radio" id="Ms" name="性別" value='男'>男
+        <input type="radio" id="Gs" name="性別" value='女'>女
+
+
+        <script language="javascript">
+            function datacheck() {
+                if (document.form1.名字.value == "") {
+                    alert("名字必填！");
+                    return false;
+                }
+
+                if (document.form1.電話.value == "") {
+                    alert("電話必填！");
+                    return false;
+
+                }
+                if (document.form1.生日.value == "") {
+                    alert("生日必填數字！");
+                    return false;
+
+                }
+
+
+                if (document.form1.性別[0].checked == false && document.form1.性別[1].checked == false) {
+                    alert("請選擇性別！");
+                    return false;
+                }
+                return true;
+            }
+            var patient = { "name": "Chalmers", "telecom": 12345678, "gender": "male", "birthDate": "1974-12-25" };
+            function myFunction() {
+                document.getElementById("Name").value = patient.name;
+                document.getElementById("Tp").value = patient.telecom;
+                document.getElementById("Bd").value = patient.birthDate;
+                //document.getElementById("Ms").value = patient.gender;
+                if (patient.gender == "male") {
+                    document.getElementById("Ms").checked = true;
+                    //document.getElementById("Gs").checked = false;
+                } else {
+                    //document.getElementById("Ms").checked = false;
+                    document.getElementById("Gs").checked = true;
+                }
+
+
+
+            }
+        </script>
+        <input type="button" value="Try" onclick="myFunction()" />
+
+
+
+        <script>
+
+            function Button1_onclick() {
+                var rate_value;
+
+                rate_value = "名字:" + document.getElementById("Name").value + "\n";
+                rate_value = rate_value + "電話:" + document.getElementById("Tp").value + "\n";
+                rate_value = rate_value + "生日:" + document.getElementById("Bd").value + "\n";
+                if (document.getElementById("Gs").checked == true) {
+                    rate_value = rate_value + "性別:" + document.getElementById("Gs").value + "\n";
+                }
+                else if (document.getElementById("Ms").checked == true) {
+                    rate_value = rate_value + "性別:" + document.getElementById("Ms").value + "\n";
+                }
+                alert(rate_value);
+            }
+        </script>
+        </head>
+        <body>
+
+
+            <input id="Button1" type="button" value="button" onclick="Button1_onclick()" /></p>
+
+      
              <table border="1">
                  <caption class="auto-style4">
-　<caption class="auto-style4">
-　<td colspan="7"><span class="auto-style4"><strong>1.主題：急診常見主訴看診&nbsp;&nbsp;&nbsp;</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>&nbsp; 病歷號碼：</strong></span><input type="text" name="病歷號碼" style="width: 125px"> <span class="auto-style4">
-            <br />
-            病人主訴: </span> <input type="checkbox" value="O" name="腹痛"><span class="auto-style4">腹痛 </span> <input type="checkbox" value="O" name="胸痛"><span class="auto-style4">胸痛 </span> <input type="checkbox" value="O" name="頭痛"><span class="auto-style4">頭痛 </span> <input type="checkbox" value="O" name="肢體無力"><span class="auto-style4">肢體無力 </span> <input type="checkbox" value="O" name="頭暈"><span class="auto-style4">頭暈 </span> <input type="checkbox" value="O" name="發燒"><span class="auto-style4">發燒 </span> <input type="checkbox" value="O" name="呼吸困難"><span class="auto-style4">呼吸困難 </span> <input type="checkbox" value="1" name="外傷"><span class="auto-style4">外傷 </span> <input type="checkbox" value="O" name="中毒"><span class="auto-style4">中毒 </span> <input type="checkbox" value="O" name="心跳停止"><span class="auto-style4">心跳停止 </span> <input type="checkbox" value="O" name="消化道出血"><span class="auto-style4">消化道出血 </span> <input type="checkbox" value="O" name="意識不清"><span class="auto-style4">意識不清  
-            </span> </td>
-        <caption class="auto-style4">
-　</tr>
+                     <caption class="auto-style4">
+                         <td colspan="7"><span class="auto-style4"><strong>1.主題：急診常見主訴看診&nbsp;&nbsp;&nbsp;</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>&nbsp; 病歷號碼：</strong></span><input type="text" name="病歷號碼" style="width: 125px">
+                             <span class="auto-style4">
+                                 <br />
+                                 病人主訴: </span>
+                             <input type="checkbox" value="O" name="腹痛"><span class="auto-style4">腹痛 </span>
+                             <input type="checkbox" value="O" name="胸痛"><span class="auto-style4">胸痛 </span>
+                             <input type="checkbox" value="O" name="頭痛"><span class="auto-style4">頭痛 </span>
+                             <input type="checkbox" value="O" name="肢體無力"><span class="auto-style4">肢體無力 </span>
+                             <input type="checkbox" value="O" name="頭暈"><span class="auto-style4">頭暈 </span>
+                             <input type="checkbox" value="O" name="發燒"><span class="auto-style4">發燒 </span>
+                             <input type="checkbox" value="O" name="呼吸困難"><span class="auto-style4">呼吸困難 </span>
+                             <input type="checkbox" value="1" name="外傷"><span class="auto-style4">外傷 </span>
+                             <input type="checkbox" value="O" name="中毒"><span class="auto-style4">中毒 </span>
+                             <input type="checkbox" value="O" name="心跳停止"><span class="auto-style4">心跳停止 </span>
+                             <input type="checkbox" value="O" name="消化道出血"><span class="auto-style4">消化道出血 </span>
+                             <input type="checkbox" value="O" name="意識不清"><span class="auto-style4">意識不清  
+                             </span></td>
+                         <caption class="auto-style4">
+                             </tr>
     <caption class="auto-style4">
-　<tr>
-        <td class="auto-style4" colspan="7">2.情境說明：在急診情境下，進行新急診病人的初步照護，從焦點式問診到初步處置與病歷紀錄之執行(使用限制：生命徵象不穩定的病人需教師陪同看診) </td>
-    </tr>
-    <tr>
-        <td class="auto-style1" colspan="7"><strong>3.當下評估項目與信賴等級</strong>(觀察學員看診後，下次遇到類似情境時您認為此學員勝任之程度)</td>
-    </tr>
-    <tr>
-        <td class="auto-style12">&nbsp;&nbsp; </td>
-        <td class="auto-style11">不足以評估/未評估 (NA)</td>
-        <td class="auto-style10">教師在旁逐步共同操作</td>
-        <td class="auto-style10">教師在旁必要時協助</td>
-        <td class="auto-style10">教師事後重點確認</td>
-        <td class="auto-style10">必要時知會教師確認</td>
-        <td class="auto-style10">獨立執行</td>
-    </tr>
-    <tr>
-        <td class="auto-style10">(1)蒐集病史資料</td>
-        <td class="auto-style11">&nbsp; <input type="checkbox" value="O" name="蒐集病史資料-不足以評估/未評估 ("><span class="auto-style4"></td>
-        <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="蒐集病史資料-教師在旁逐步共同操作 ("><span class="auto-style4"></td>
-        <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="蒐集病史資料-教師在旁必要時協助 ("><span class="auto-style4"></td>
-        <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="蒐集病史資料-教師事後重點確認 ("><span class="auto-style4"></td>
-        <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="蒐集病史資料-必要時知會教師確認 ("><span class="auto-style4"></td>
-        <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="蒐集病史資料-獨立執行 ("><span class="auto-style4"></td>
-    </tr>
-    <tr>
-        <td class="auto-style10">(2)身體診察</td>
-       <td class="auto-style11">&nbsp; <input type="checkbox" value="O" name="身體診察-不足以評估/未評估 ("><span class="auto-style4"></td>
-        <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="身體診察-教師在旁逐步共同操作 ("><span class="auto-style4"></td>
-        <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="身體診察-教師在旁必要時協助 ("><span class="auto-style4"></td>
-        <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="身體診察-教師事後重點確認 ("><span class="auto-style4"></td>
-        <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="身體診察-必要時知會教師確認 ("><span class="auto-style4"></td>
-        <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="身體診察-獨立執行 ("><span class="auto-style4"></td>    </tr>
-    <tr>
-        <td class="auto-style10">(3)一般檢驗、檢查的安排與判讀 </td>
-       <td class="auto-style11">&nbsp; <input type="checkbox" value="O" name="一般檢驗、檢查的安排與判讀-不足以評估/未評估 ("><span class="auto-style4"></td>
-        <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="一般檢驗、檢查的安排與判讀-教師在旁逐步共同操作 ("><span class="auto-style4"></td>
-        <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="一般檢驗、檢查的安排與判讀-教師在旁必要時協助 ("><span class="auto-style4"></td>
-        <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="一般檢驗、檢查的安排與判讀-教師事後重點確認 ("><span class="auto-style4"></td>
-        <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="一般檢驗、檢查的安排與判讀-必要時知會教師確認 ("><span class="auto-style4"></td>
-        <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="一般檢驗、檢查的安排與判讀-獨立執行 ("><span class="auto-style4"></td>
-    </tr>
-    <tr>
-        <td class="auto-style10">(4)整合臨床所見排序臨床鑑別診斷 </td>
-       <td class="auto-style11">&nbsp; <input type="checkbox" value="O" name="整合臨床所見排序臨床鑑別診斷-不足以評估/未評估 ("><span class="auto-style4"></td>
-        <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="整合臨床所見排序臨床鑑別診斷-教師在旁逐步共同操作 ("><span class="auto-style4"></td>
-        <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="整合臨床所見排序臨床鑑別診斷-教師在旁必要時協助 ("><span class="auto-style4"></td>
-        <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="整合臨床所見排序臨床鑑別診斷-教師事後重點確認 ("><span class="auto-style4"></td>
-        <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="整合臨床所見排序臨床鑑別診斷-必要時知會教師確認 ("><span class="auto-style4"></td>
-        <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="整合臨床所見排序臨床鑑別診斷-獨立執行 ("><span class="auto-style4"></td>
-    </tr>
-    <tr>
-        <td class="auto-style10">(5)討論及建立醫囑</td>
-        <td class="auto-style11">&nbsp; <input type="checkbox" value="O" name="討論及建立醫囑-不足以評估/未評估 ("><span class="auto-style4"></td>
-        <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="討論及建立醫囑-教師在旁逐步共同操作 ("><span class="auto-style4"></td>
-        <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="討論及建立醫囑-教師在旁必要時協助 ("><span class="auto-style4"></td>
-        <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="討論及建立醫囑-教師事後重點確認 ("><span class="auto-style4"></td>
-        <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="討論及建立醫囑-必要時知會教師確認 ("><span class="auto-style4"></td>
-        <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="討論及建立醫囑-獨立執行 ("><span class="auto-style4"></td>
-    </tr>
-    <tr>
-        <td class="auto-style10">(6)病歷寫作 </td>
-         <td class="auto-style11">&nbsp; <input type="checkbox" value="O" name="病歷寫作-不足以評估/未評估 ("><span class="auto-style4"></td>
-        <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="病歷寫作-教師在旁逐步共同操作 ("><span class="auto-style4"></td>
-        <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="病歷寫作-教師在旁必要時協助 ("><span class="auto-style4"></td>
-        <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="病歷寫作-教師事後重點確認 ("><span class="auto-style4"></td>
-        <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="病歷寫作-必要時知會教師確認 ("><span class="auto-style4"></td>
-        <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="病歷寫作-獨立執行 ("><span class="auto-style4"></td>
-    </tr>
-    <tr>
-        <td class="auto-style10">(7)解釋病情與治療計畫並取得知情同意</td>
-        <td class="auto-style11">&nbsp; <input type="checkbox" value="O" name="解釋病情與治療計畫並取得知情同意-不足以評估/未評估 ("><span class="auto-style4"></td>
-        <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="解釋病情與治療計畫並取得知情同意-教師在旁逐步共同操作 ("><span class="auto-style4"></td>
-        <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="解釋病情與治療計畫並取得知情同意-教師在旁必要時協助 ("><span class="auto-style4"></td>
-        <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="解釋病情與治療計畫並取得知情同意-教師事後重點確認 ("><span class="auto-style4"></td>
-        <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="解釋病情與治療計畫並取得知情同意-必要時知會教師確認 ("><span class="auto-style4"></td>
-        <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="解釋病情與治療計畫並取得知情同意-獨立執行 ("><span class="auto-style4"></td>
-    </tr>
-    <tr>
-        <td class="auto-style10">(8)諮商衛教 </td>
-        <td class="auto-style11">&nbsp; <input type="checkbox" value="O" name="諮商衛教-不足以評估/未評估 ("><span class="auto-style4"></td>
-        <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="諮商衛教-教師在旁逐步共同操作 ("><span class="auto-style4"></td>
-        <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="諮商衛教-教師在旁必要時協助 ("><span class="auto-style4"></td>
-        <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="諮商衛教-教師事後重點確認 ("><span class="auto-style4"></td>
-        <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="諮商衛教-必要時知會教師確認 ("><span class="auto-style4"></td>
-        <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="諮商衛教-獨立執行 ("><span class="auto-style4"></td>
-    </tr>
-    <tr>
-        <td class="auto-style10">(9)整體任務</td>
-       <td class="auto-style11">&nbsp; <input type="checkbox" value="O" name="整體任務-不足以評估/未評估 ("><span class="auto-style4"></td>
-        <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="整體任務-教師在旁逐步共同操作 ("><span class="auto-style4"></td>
-        <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="整體任務-教師在旁必要時協助 ("><span class="auto-style4"></td>
-        <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="整體任務-教師事後重點確認 ("><span class="auto-style4"></td>
-        <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="整體任務-必要時知會教師確認 ("><span class="auto-style4"></td>
-        <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="整體任務-獨立執行 ("><span class="auto-style4"></td>
-    </tr>
-    <tr>
-    <caption class="auto-style4">
-　<tr>
-        <td class="auto-style13" colspan="7">4.質性回饋:</span><input type="text" name="欄位名稱" style="width: 824px; height: 15px; margin-top: 0px;"><span class="auto-style4"></td>
-    </tr>
-</table>
-       
-             </span>
+        <tr>
+            <td class="auto-style4" colspan="7">2.情境說明：在急診情境下，進行新急診病人的初步照護，從焦點式問診到初步處置與病歷紀錄之執行(使用限制：生命徵象不穩定的病人需教師陪同看診) </td>
+        </tr>
+        <tr>
+            <td class="auto-style1" colspan="7"><strong>3.當下評估項目與信賴等級</strong>(觀察學員看診後，下次遇到類似情境時您認為此學員勝任之程度)</td>
+        </tr>
+        <tr>
+            <td class="auto-style12">&nbsp;&nbsp; </td>
+            <td class="auto-style11">不足以評估/未評估 (NA)</td>
+            <td class="auto-style10">教師在旁逐步共同操作</td>
+            <td class="auto-style10">教師在旁必要時協助</td>
+            <td class="auto-style10">教師事後重點確認</td>
+            <td class="auto-style10">必要時知會教師確認</td>
+            <td class="auto-style10">獨立執行</td>
+        </tr>
+        <tr>
+            <td class="auto-style10">(1)蒐集病史資料</td>
+            <td class="auto-style11">&nbsp;
+                <input type="checkbox" value="O" name="蒐集病史資料-不足以評估/未評估 ("><span class="auto-style4"></td>
+            <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="蒐集病史資料-教師在旁逐步共同操作 ("><span class="auto-style4"></td>
+            <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="蒐集病史資料-教師在旁必要時協助 ("><span class="auto-style4"></td>
+            <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="蒐集病史資料-教師事後重點確認 ("><span class="auto-style4"></td>
+            <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="蒐集病史資料-必要時知會教師確認 ("><span class="auto-style4"></td>
+            <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="蒐集病史資料-獨立執行 ("><span class="auto-style4"></td>
+        </tr>
+        <tr>
+            <td class="auto-style10">(2)身體診察</td>
+            <td class="auto-style11">&nbsp;
+                <input type="checkbox" value="O" name="身體診察-不足以評估/未評估 ("><span class="auto-style4"></td>
+            <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="身體診察-教師在旁逐步共同操作 ("><span class="auto-style4"></td>
+            <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="身體診察-教師在旁必要時協助 ("><span class="auto-style4"></td>
+            <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="身體診察-教師事後重點確認 ("><span class="auto-style4"></td>
+            <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="身體診察-必要時知會教師確認 ("><span class="auto-style4"></td>
+            <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="身體診察-獨立執行 ("><span class="auto-style4"></td>
+        </tr>
+        <tr>
+            <td class="auto-style10">(3)一般檢驗、檢查的安排與判讀 </td>
+            <td class="auto-style11">&nbsp;
+                <input type="checkbox" value="O" name="一般檢驗、檢查的安排與判讀-不足以評估/未評估 ("><span class="auto-style4"></td>
+            <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="一般檢驗、檢查的安排與判讀-教師在旁逐步共同操作 ("><span class="auto-style4"></td>
+            <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="一般檢驗、檢查的安排與判讀-教師在旁必要時協助 ("><span class="auto-style4"></td>
+            <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="一般檢驗、檢查的安排與判讀-教師事後重點確認 ("><span class="auto-style4"></td>
+            <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="一般檢驗、檢查的安排與判讀-必要時知會教師確認 ("><span class="auto-style4"></td>
+            <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="一般檢驗、檢查的安排與判讀-獨立執行 ("><span class="auto-style4"></td>
+        </tr>
+        <tr>
+            <td class="auto-style10">(4)整合臨床所見排序臨床鑑別診斷 </td>
+            <td class="auto-style11">&nbsp;
+                <input type="checkbox" value="O" name="整合臨床所見排序臨床鑑別診斷-不足以評估/未評估 ("><span class="auto-style4"></td>
+            <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="整合臨床所見排序臨床鑑別診斷-教師在旁逐步共同操作 ("><span class="auto-style4"></td>
+            <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="整合臨床所見排序臨床鑑別診斷-教師在旁必要時協助 ("><span class="auto-style4"></td>
+            <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="整合臨床所見排序臨床鑑別診斷-教師事後重點確認 ("><span class="auto-style4"></td>
+            <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="整合臨床所見排序臨床鑑別診斷-必要時知會教師確認 ("><span class="auto-style4"></td>
+            <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="整合臨床所見排序臨床鑑別診斷-獨立執行 ("><span class="auto-style4"></td>
+        </tr>
+        <tr>
+            <td class="auto-style10">(5)討論及建立醫囑</td>
+            <td class="auto-style11">&nbsp;
+                <input type="checkbox" value="O" name="討論及建立醫囑-不足以評估/未評估 ("><span class="auto-style4"></td>
+            <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="討論及建立醫囑-教師在旁逐步共同操作 ("><span class="auto-style4"></td>
+            <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="討論及建立醫囑-教師在旁必要時協助 ("><span class="auto-style4"></td>
+            <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="討論及建立醫囑-教師事後重點確認 ("><span class="auto-style4"></td>
+            <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="討論及建立醫囑-必要時知會教師確認 ("><span class="auto-style4"></td>
+            <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="討論及建立醫囑-獨立執行 ("><span class="auto-style4"></td>
+        </tr>
+        <tr>
+            <td class="auto-style10">(6)病歷寫作 </td>
+            <td class="auto-style11">&nbsp;
+                <input type="checkbox" value="O" name="病歷寫作-不足以評估/未評估 ("><span class="auto-style4"></td>
+            <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="病歷寫作-教師在旁逐步共同操作 ("><span class="auto-style4"></td>
+            <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="病歷寫作-教師在旁必要時協助 ("><span class="auto-style4"></td>
+            <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="病歷寫作-教師事後重點確認 ("><span class="auto-style4"></td>
+            <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="病歷寫作-必要時知會教師確認 ("><span class="auto-style4"></td>
+            <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="病歷寫作-獨立執行 ("><span class="auto-style4"></td>
+        </tr>
+        <tr>
+            <td class="auto-style10">(7)解釋病情與治療計畫並取得知情同意</td>
+            <td class="auto-style11">&nbsp;
+                <input type="checkbox" value="O" name="解釋病情與治療計畫並取得知情同意-不足以評估/未評估 ("><span class="auto-style4"></td>
+            <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="解釋病情與治療計畫並取得知情同意-教師在旁逐步共同操作 ("><span class="auto-style4"></td>
+            <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="解釋病情與治療計畫並取得知情同意-教師在旁必要時協助 ("><span class="auto-style4"></td>
+            <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="解釋病情與治療計畫並取得知情同意-教師事後重點確認 ("><span class="auto-style4"></td>
+            <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="解釋病情與治療計畫並取得知情同意-必要時知會教師確認 ("><span class="auto-style4"></td>
+            <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="解釋病情與治療計畫並取得知情同意-獨立執行 ("><span class="auto-style4"></td>
+        </tr>
+        <tr>
+            <td class="auto-style10">(8)諮商衛教 </td>
+            <td class="auto-style11">&nbsp;
+                <input type="checkbox" value="O" name="諮商衛教-不足以評估/未評估 ("><span class="auto-style4"></td>
+            <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="諮商衛教-教師在旁逐步共同操作 ("><span class="auto-style4"></td>
+            <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="諮商衛教-教師在旁必要時協助 ("><span class="auto-style4"></td>
+            <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="諮商衛教-教師事後重點確認 ("><span class="auto-style4"></td>
+            <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="諮商衛教-必要時知會教師確認 ("><span class="auto-style4"></td>
+            <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="諮商衛教-獨立執行 ("><span class="auto-style4"></td>
+        </tr>
+        <tr>
+            <td class="auto-style10">(9)整體任務</td>
+            <td class="auto-style11">&nbsp;
+                <input type="checkbox" value="O" name="整體任務-不足以評估/未評估 ("><span class="auto-style4"></td>
+            <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="整體任務-教師在旁逐步共同操作 ("><span class="auto-style4"></td>
+            <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="整體任務-教師在旁必要時協助 ("><span class="auto-style4"></td>
+            <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="整體任務-教師事後重點確認 ("><span class="auto-style4"></td>
+            <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="整體任務-必要時知會教師確認 ("><span class="auto-style4"></td>
+            <td class="auto-style10">&nbsp;<input type="checkbox" value="O" name="整體任務-獨立執行 ("><span class="auto-style4"></td>
+        </tr>
+        <tr>
+            <caption class="auto-style4">
+                <tr>
+                    <td class="auto-style13" colspan="7">4.質性回饋:</span><input type="text" name="欄位名稱" style="width: 824px; height: 15px; margin-top: 0px;"><span class="auto-style4"></td>
+                </tr>
+             </table>
+
+            </span>
     <h2>&nbsp;
 　
- <P align="center"><INPUT id="Submit1" type="submit" value="送出表單" name="Sumit"></P>
-</form>
+        <input type="submit" value='Try it'>
+    </form>
+
+    </form>
 </body>
 </html>
+
+
+
+
+
