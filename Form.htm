@@ -1,11 +1,11 @@
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
     <style type="text/css">
-        .auto-style1 
-        {
+        .auto-style1 {
             height: 36px;
             font-weight: normal;
         }
@@ -13,21 +13,22 @@
         .auto-style4 {
             font-weight: normal;
         }
+
         .auto-style10 {
             height: 90px;
             font-weight: normal;
             width: 135px;
             color: #003300;
         }
-        .auto-style11 
-        {
+
+        .auto-style11 {
             height: 90px;
             font-weight: normal;
             width: 135px;
             text-align: left;
         }
-            .auto-style12 
-        {
+
+        .auto-style12 {
             height: 90px;
             font-weight: normal;
             width: 135px;
@@ -35,7 +36,7 @@
             text-align: right;
             font-size: medium;
         }
-        </style>
+    </style>
 </head>
 <body>
     <h1 class="auto-style4">急診醫學訓練評估表單</h1>
@@ -48,33 +49,27 @@
         <input type="radio" id="Gs" name="性別" value='女'>女<br>
         <script language="javascript">
             function datacheck() {
-                if (document.form1.名字.value == "") 
-                {
+                if (document.form1.名字.value == "") {
                     alert("名字必填！");
                     return false;
                 }
-                if (document.form1.電話.value == "") 
-                {
+                if (document.form1.電話.value == "") {
                     alert("電話必填！");
                     return false;
                 }
-                if (document.form1.生日.value == "") 
-                {
+                if (document.form1.生日.value == "") {
                     alert("生日必填數字！");
                     return false;
                 }
-                if (document.form1.性別[0].checked == false && document.form1.性別[1].checked == false) 
-                {
+                if (document.form1.性別[0].checked == false && document.form1.性別[1].checked == false) {
                     alert("請選擇性別！");
                     return false;
                 }
-                if (document.form1.身高.value == "") 
-                {
+                if (document.form1.身高.value == "") {
                     alert("身高必填！");
                     return false;
                 }
-                if (document.form1.體重.value == "") 
-                {
+                if (document.form1.體重.value == "") {
                     alert("體重必填！");
                     return false;
                 }
@@ -82,26 +77,22 @@
                 return true;
             }
             var patient = { "name": "Chalmers", "telecom": 12345678, "gender": "male", "birthDate": "1974-12-25", "high": "180", "weight": "60" };
-            function myFunction() 
-            {
+            function myFunction() {
                 document.getElementById("Name").value = patient.name;
                 document.getElementById("Tp").value = patient.telecom;
                 document.getElementById("Bd").value = patient.birthDate;
-               if (patient.gender == "male") 
-               {
+                if (patient.gender == "male") {
                     document.getElementById("Ms").checked = true;
-               } else 
-               {
+                } else {
                     document.getElementById("Gs").checked = true;
                 }
-                    document.getElementById("high").value = patient.high;
-                    document.getElementById("weight").value = patient.weight;
+                document.getElementById("high").value = patient.high;
+                document.getElementById("weight").value = patient.weight;
             }
         </script>
         <input type="button" value="Try" onclick="myFunction()" />
         <script>
-            function Button1_onclick() 
-            {
+            function Button1_onclick() {
                 var rate_value;
                 rate_value = "名字:" + document.getElementById("Name").value + "\n";
                 rate_value = rate_value + "電話:" + document.getElementById("Tp").value + "\n";
@@ -117,21 +108,34 @@
 
                 alert(rate_value);
             }
-                function judgetime() {
-                var a = document.getElementsByType("checkbox");
-             var y = new Array();
-             for (i = 0; i < a.length; i++) {
-                 if (a[i].checked == true) {
-                     y.push(a[i].value);
-                 }
-             }
-             str = "";
-             for (i = 0; i < y.length; i++) {
+            function judgetime()//checkbox 印出
+            {
+                var fe = document.forms[0].A;
+                var txt = "";
+                var i;
+                for (i = 0; i < fe.length; i++) {
+                    if (fe[i].checked) {
+                        txt = txt + fe[i].value + " ";
+                    }
+                }
+                document.getElementById("order").value = txt;
+            }
 
-                 str += "<tr><td>" + y[i] + "</td></tr>";
-             }
-             document.getElementById("printf").innerHTML = str;
-         }
+            /*function judgetime() {
+             var a = document.getElementsByType("checkbox");
+          var y = new Array();
+          for (i = 0; i < a.length; i++) {
+              if (a[i].checked == true) {
+                  y.push(a[i].value);
+              }
+          }
+          str = "";
+          for (i = 0; i < y.length; i++) {
+
+              str += "<tr><td>" + y[i] + "</td></tr>";
+          }
+          document.getElementById("printf").innerHTML = str;
+      }*/
         </script>
 
         </head>
@@ -175,7 +179,7 @@
                     }
                 } // end else
             }
-       </script>
+        </script>
 
 
         身高<input onkeyup="value=value.replace(/[^\d]/g,'') " id="height" name="身高">
@@ -184,18 +188,18 @@
         <input type="button" value="Bmi" onclick="f1()"><br />
         <br />
         科別：
-  <select id="selectID" name="BranchName">
-      <script>
+        <select id="selectID" name="BranchName">
+            <script>
 
-          var obj = document.getElementById("selectID");
-          var selectID = new Array("骨科", "婦產科", "小兒科", "復健科", "皮膚科", "腸胃科", "心臟內科", "神經內科", "耳鼻喉科", "一般外科");
-          for (i = 0; i < selectID.length; i++) {
-              var objOption = new Option(selectID[i], selectID[i]);
-              obj.options.add(objOption);
-          }
-      </script>
+                var obj = document.getElementById("selectID");
+                var selectID = new Array("骨科", "婦產科", "小兒科", "復健科", "皮膚科", "腸胃科", "心臟內科", "神經內科", "耳鼻喉科", "一般外科");
+                for (i = 0; i < selectID.length; i++) {
+                    var objOption = new Option(selectID[i], selectID[i]);
+                    obj.options.add(objOption);
+                }
+            </script>
 
-  </select>
+        </select>
         <div id="result"></div>
 
 
@@ -219,80 +223,92 @@
                     <input type="checkbox" value="O" name="心跳停止"><span class="auto-style4">心跳停止 </span>
                     <input type="checkbox" value="O" name="消化道出血"><span class="auto-style4">消化道出血 </span>
                     <input type="checkbox" value="O" name="意識不清"><span class="auto-style4">
-                                意識不清
+                        意識不清
                     </span>
                 </td>
                 <caption class="auto-style4">
                     </tr>
-                            <caption class="auto-style4">
-                                <tr>
-                                    <td class="auto-style4" colspan="7">2.情境說明：在急診情境下，進行新急診病人的初步照護，從焦點式問診到初步處置與病歷紀錄之執行(使用限制：生命徵象不穩定的病人需教師陪同看診) </td>
-                                </tr>
-                                <tr>
-                                    <td class="auto-style1" colspan="7"><strong>3.當下評估項目與信賴等級</strong>(觀察學員看診後，下次遇到類似情境時您認為此學員勝任之程度)</td>
-                                </tr>
-                                <tr>
-                                    <td class="auto-style12">&nbsp;&nbsp; </td>
-                                    <td class="auto-style11">不足以評估/未評估 (NA)</td>
-                                    <td class="auto-style10">教師在旁逐步共同操作</td>
-                                    <td class="auto-style10">教師在旁必要時協助</td>
-                                    <td class="auto-style10">教師事後重點確認</td>
-                                    <td class="auto-style10">必要時知會教師確認</td>
-                                    <td class="auto-style10">獨立執行</td>
-                                </tr>
-                                <tr>
-                                    <td class="auto-style10">(1)蒐集病史資料</td>
-                                    <td class="auto-style11">&nbsp;
-                                        <input type="checkbox" value="蒐集病史資料-不足以評估/未評估" name="A"("><span class="auto-style4">
-                                    </td>
-                                    <td class="auto-style10">&nbsp;<input type="checkbox" id="Checkbox" value="蒐集病史資料-教師在旁逐步共同操作" name="A" ("><span class="auto-style4"></td>
-                                    <td class="auto-style10">&nbsp;<input type="checkbox" id="Checkbox" value="蒐集病史資料-教師在旁必要時協助" name="A" ("><span class="auto-style4"></td>
-                                    <td class="auto-style10">&nbsp;<input type="checkbox" id="Checkbox" value="蒐集病史資料-教師事後重點確認" name="A" ("><span class="auto-style4"></td>
-                                    <td class="auto-style10">&nbsp;<input type="checkbox" id="Checkbox" value="蒐集病史資料-必要時知會教師確認" name="A" ("><span class="auto-style4"></td>
-                                    <td class="auto-style10">&nbsp;<input type="checkbox" id="Checkbox" value="蒐集病史資料-獨立執行" name="A" ("><span class="auto-style4"></td>
-                                </tr>
-                                <tr>
-                                    <td class="auto-style10">(2)身體診察</td>
-                                    <td class="auto-style11">&nbsp;
-                                        <input type="checkbox" value="身體診察-不足以評估/未評估" name="A" ("><span class="auto-style4">
-                                    </td>
-                                    <td class="auto-style10">&nbsp;<input type="checkbox" value="身體診察-教師在旁逐步共同操作" name="A" ("><span class="auto-style4"></td>
-                                    <td class="auto-style10">&nbsp;<input type="checkbox" value="身體診察-教師在旁必要時協助" name="A" ("><span class="auto-style4"></td>
-                                    <td class="auto-style10">&nbsp;<input type="checkbox" value="身體診察-教師事後重點確認" name="A" ("><span class="auto-style4"></td>
-                                    <td class="auto-style10">&nbsp;<input type="checkbox" value="身體診察-必要時知會教師確認" name="A" ("><span class="auto-style4"></td>
-                                    <td class="auto-style10">&nbsp;<input type="checkbox" value="身體診察-獨立執行" name="A" ("><span class="auto-style4"></td>
-                                </tr>
-                                                        
+                    <caption class="auto-style4">
+                        <tr>
+                            <td class="auto-style4" colspan="7">2.情境說明：在急診情境下，進行新急診病人的初步照護，從焦點式問診到初步處置與病歷紀錄之執行(使用限制：生命徵象不穩定的病人需教師陪同看診) </td>
+                        </tr>
+                        <tr>
+                            <td class="auto-style1" colspan="7"><strong>3.當下評估項目與信賴等級</strong>(觀察學員看診後，下次遇到類似情境時您認為此學員勝任之程度)</td>
+                        </tr>
+                        <tr>
+                            <td class="auto-style12">&nbsp;&nbsp; </td>
+                            <td class="auto-style11">不足以評估/未評估 (NA)</td>
+                            <td class="auto-style10">教師在旁逐步共同操作</td>
+                            <td class="auto-style10">教師在旁必要時協助</td>
+                            <td class="auto-style10">教師事後重點確認</td>
+                            <td class="auto-style10">必要時知會教師確認</td>
+                            <td class="auto-style10">獨立執行</td>
+                        </tr>
+                        <tr>
+                            <td class="auto-style10">(1)蒐集病史資料</td>
+                            <td class="auto-style11">
+                                &nbsp;
+                                <input type="checkbox" value="蒐集病史資料-不足以評估/未評估" name="A" ("><span class="auto-style4">
+                            </td>
+                            <td class="auto-style10">&nbsp;<input type="checkbox" id="Checkbox" value="蒐集病史資料-教師在旁逐步共同操作" name="A" ("><span class="auto-style4"></td>
+                            <td class="auto-style10">&nbsp;<input type="checkbox" id="Checkbox" value="蒐集病史資料-教師在旁必要時協助" name="A" ("><span class="auto-style4"></td>
+                            <td class="auto-style10">&nbsp;<input type="checkbox" id="Checkbox" value="蒐集病史資料-教師事後重點確認" name="A" ("><span class="auto-style4"></td>
+                            <td class="auto-style10">&nbsp;<input type="checkbox" id="Checkbox" value="蒐集病史資料-必要時知會教師確認" name="A" ("><span class="auto-style4"></td>
+                            <td class="auto-style10">&nbsp;<input type="checkbox" id="Checkbox" value="蒐集病史資料-獨立執行" name="A" ("><span class="auto-style4"></td>
+                        </tr>
+                        <tr>
+                            <td class="auto-style10">(2)身體診察</td>
+                            <td class="auto-style11">
+                                &nbsp;
+                                <input type="checkbox" value="身體診察-不足以評估/未評估" name="A" ("><span class="auto-style4">
+                            </td>
+                            <td class="auto-style10">&nbsp;<input type="checkbox" value="身體診察-教師在旁逐步共同操作" name="A" ("><span class="auto-style4"></td>
+                            <td class="auto-style10">&nbsp;<input type="checkbox" value="身體診察-教師在旁必要時協助" name="A" ("><span class="auto-style4"></td>
+                            <td class="auto-style10">&nbsp;<input type="checkbox" value="身體診察-教師事後重點確認" name="A" ("><span class="auto-style4"></td>
+                            <td class="auto-style10">&nbsp;<input type="checkbox" value="身體診察-必要時知會教師確認" name="A" ("><span class="auto-style4"></td>
+                            <td class="auto-style10">&nbsp;<input type="checkbox" value="身體診察-獨立執行" name="A" ("><span class="auto-style4"></td>
+                        </tr>
 
- 
 
 
-        </table> 
-        
-        
 
-        
-        
-        
-        <p><input id="Button3" type="button" value="以勾選項目" onclick="return judgetime()" /><html xmlns="http://www.w3.org/1999/xhtml"><body><table id="printf" style="border:8px #FFD382 groove; height: 116px; width: 709px; margin-top: 0px;" cellpadding="10" border='0'>
-        </span>
-            <h2>
+
+        </table>
+
+
+
+
+
+
+        <p>
+            <input id="Button3" type="button" value="以勾選項目" onclick="judgetime()" />
+            <td><input class="form-control" id="order" value="" style="border:8px #FFD382 groove; height: 116px; width: 709px; margin-top: 0px;" cellpadding="10" border='0'></td>
+            <html xmlns="http://www.w3.org/1999/xhtml">
+            <body>
+
+                </span>
+                <h2>
+            </body>
+        </html>
+        <tr>
+            <td>&nbsp;</td>
+        </tr>
+        </table>
+
+        <input type="submit" value='Try it'>
+    </p>
 </body>
 </html>
-            <tr>
-                <td>&nbsp;</td>
-            </tr>
-            </table>
-
-                <input type="submit" value='Try it'></p>
-</body>
-</html>
 <p>
-    &nbsp;</p>
+    &nbsp;
+</p>
 <p>
-    &nbsp;</p>
+    &nbsp;
+</p>
 <p>
-    &nbsp;</p>
+    &nbsp;
+</p>
 <p>
-    &nbsp;</p>
+    &nbsp;
+</p>
 
